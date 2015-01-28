@@ -1,0 +1,10 @@
+/*
+ *= require_self
+ *= require_tree
+ */
+
+// bootstrap-sprokects needs to be imported before anything else
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+

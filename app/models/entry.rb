@@ -1,4 +1,13 @@
 class Entry < ActiveRecord::Base
+  after_initialize :init
+
+  def init
+    if self.stop
+      self.duration = self.stop - self.start
+    else
+      self.duration = 0
+    end
+  end
 
   def calculate_duration
     self.start - self.stop
@@ -40,6 +49,10 @@ class Entry < ActiveRecord::Base
 
   def stop_time_formatted
     format_time(self.stop)
+  end
+
+  def date_formatted
+    format_date(self.start)
   end
 
   def convert_seconds_to_time_duration(seconds)

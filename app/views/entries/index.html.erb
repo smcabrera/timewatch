@@ -1,34 +1,36 @@
+<div class="container">
 <h1>Time Entries</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <td>Day</td>
-    <td>Start</td>
-      <td>End</td>
-    <td>Duration</td>
-    <td>Note</td>
+    <th>Day</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Duration</th>
+    <th>Note</th>
   </tr>
 
-<% @entries.each do |entry| %>
-  <tr>
-    <td>
-      <%= entry.start.to_date %>
-    </td>
-    <td>
-      <%= entry.start_time_formatted %>
-    </td>
-    <td>
-      <%= entry.stop_time_formatted %>
-    </td>
-    <td>
-      <%= entry.format_duration %>
-    </td>
-    <td>
-      <%= entry.notes %>
-    </td>
-  </tr>
-<% end %>
+  <% @entries.each do |entry| %>
+    <tr>
+      <td>
+        <%= entry.date_formatted %>
+      </td>
+      <td>
+        <%= entry.start_time_formatted %>
+      </td>
+      <td>
+        <%= entry.stop_time_formatted %>
+      </td>
+      <td>
+        <%= entry.format_duration %>
+      </td>
+      <td>
+        <%= entry.notes %>
+      </td>
+    </tr>
+  <% end %>
 
 </table>
 
+</div>
 

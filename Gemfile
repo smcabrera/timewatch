@@ -7,10 +7,9 @@ gem 'rails', '4.1.7'
 gem 'sqlite3'
 
 group :development do
-  gem 'pry'
-  gem 'pry-rails'
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'jazz_fingers'
 end
 
 group :test do

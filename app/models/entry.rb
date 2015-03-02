@@ -18,14 +18,19 @@ class Entry < ActiveRecord::Base
   end
 
   def to_time(time_string)
-    if time_string.class == "Time"
+    if time_string.class == Time
       return time_string
-    elsif time_string.class == "String"
+    elsif time_string.class == String
       hour = time_string[0..1].sub(":", "")
       minute = time_string[3..4]
       day, month, year = Time.now.day, Time.now.month, Time.now.year
       return Time.new(year, month, day, hour, minute)
     end
+  end
+
+  def sum (a, b)
+    binding.pry
+    a + b
   end
 
   def tomorrow(time)

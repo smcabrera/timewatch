@@ -3,7 +3,11 @@ class EntriesController < ApplicationController
     @entries = Entry.all
   end
 
-  def start_clock
+  def show
+    @entry = Entry.find(params[:id])
+  end
+
+  def start
     @entry = Entry.create(:start  => Time.now)
   end
 
@@ -12,14 +16,20 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = params[:id]
+    @entry = Entry.all.build(entry_params)
+
     if @entry.save
       redirect_to entries_path
     else
       flash[:error] = "There was a problem creating the entry. Please try again."
+      render :new
     end
   end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
+  def entry_params
+    params.require(:entry).permit(:start, :stop, :notes)
+  end
 end
 
 

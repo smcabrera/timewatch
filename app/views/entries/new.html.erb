@@ -1,20 +1,31 @@
 <div class="container">
   <h2>New Entry</h2>
 
+  <% if @entry.errors.any?  %>
+    <div class="alert alert-danger">
+      <h4>There <%= @entry.errors.count > 1 ? "are " : "is " %><%= pluralize(@entry.errors.count, "error") %></h4>
+      <ul>
+        <% @entry.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_for @entry do |f| %>
     <div class="form-group">
-      <%= f.label :date %>
-      <%= f.text_field :date, class: 'form-control', placeholder: "mm/dd/yyyy" %>
+      <%#<%= f.label :date %>%>
+      <%#<%= f.date_field_tag :date, class: 'form-control', placeholder: "mm/dd/yyyy" %>%>
     </div>
 
     <div class="form-group">
       <%= f.label :start %>
-      <%= f.text_field :start, class: 'form-control', placeholder: "hh:mm" %>
+      <%= f.time_field :start, class: 'form-control', placeholder: "hh:mm" %>
     </div>
 
     <div class="form-group">
       <%= f.label :stop %>
-      <%= f.text_field :stop, class: 'form-control', placeholder: "hh:mm" %>
+      <%= f.time_field :stop, class: 'form-control', placeholder: "hh:mm" %>
     </div>
 
     <div class="form-group">

@@ -1,5 +1,8 @@
 class Entry < ActiveRecord::Base
 
+  validates :start, presence: true
+  validates :notes, presence: true
+
   def duration
     Duration.new(self.stop - self.start)
   end
@@ -12,8 +15,17 @@ class Entry < ActiveRecord::Base
     format_time(self.stop)
   end
 
+    # I don't want to deal with days so I'd rather just handle hours greater than a day with an integer number of hours
+    # As a side note, it's pretty cool how he made this formatting work
+      # See docs here: http://www.rubydoc.info/github/peleteiro/ruby-duration/master/Duration
+
   def duration_formatted
-    self.duration.format("%h:%m:%s")
+    if self.duration.days > 0
+      hours = self.duration.total / 60 / 60
+      self.duration.format "#{hours}:%M:%S"
+    else
+      self.duration.format "%H:%M:%S"
+    end
   end
 
   def date_formatted

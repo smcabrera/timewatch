@@ -2,17 +2,11 @@ require 'rails_helper'
 
 describe Entry do
 
-  # Let's just test these helper functions I need for the view
-
-  # First I'll need to stub out a fixed time that I can use to test everything
   before do
     start = Time.new(1988, 1, 13, 10, 30, 15, 0)
     stop = Time.new(1988, 1, 13, 15, 10, 15, 0)
     @entry = Entry.new(:start => start, :stop => stop )
   end
-
-  # I need a date_formatted method to give me back the date of the start time in the appropriate format
-  # entry.date_formatted should be in format
 
   describe '#date_formatted' do
     it 'returns the start time in this format: "Mon Mar 02, 2015"' do
@@ -44,8 +38,33 @@ describe Entry do
   end
 
   describe '#duration_formatted' do
-    it 'returns the duration formatted like this: "4:40:0"' do
-      expect(@entry.duration_formatted).to eq("4:40:0")
+    it 'formats "4 hours, 40 minutes and 0 seconds" as "04:40:00"' do
+      expect(@entry.duration_formatted).to eq("04:40:00")
+    end
+
+    it 'formats 2 hours, 6 minutes and 30 seconds as "02:06:30"' do
+      start = Time.new(1988, 1, 13, 10, 30, 15, 0)
+      stop  = Time.new(1988, 1, 13, 12, 36, 45, 0)
+      entry = Entry.new(:start => start, :stop => stop )
+      expect(entry.duration_formatted).to eq("02:06:30")
+    end
+
+    it 'formats 10 hours, 10 minutes and 5 seconds as "10:10:05"' do
+      start = Time.new(1988, 1, 13, 10, 30, 15, 0)
+      stop  = Time.new(1988, 1, 13, 20, 40, 20, 0)
+      entry = Entry.new(:start => start, :stop => stop )
+      expect(entry.duration_formatted).to eq("10:10:05")
+    end
+
+    it 'formats 103 hours, 10 minutes and 5 seconds as "103:10:05"' do
+      start = Time.new(1988, 1, 13, 10, 30, 15, 0)
+      stop  = start + Duration.new(
+        :hours   => 103,
+        :minutes => 10,
+        :seconds => 5
+      ).total
+      entry = Entry.new(:start => start, :stop => stop )
+      expect(entry.duration_formatted).to eq("103:10:05")
     end
   end
 

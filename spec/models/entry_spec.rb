@@ -20,13 +20,24 @@ describe Entry do
     it 'returns the start time formatted like this: "10:30:15"' do
       expect(@entry.start_time_formatted).to eq("10:30:15")
     end
+
+    it 'formats "three o five in the afternoon with five seconds as "15:05:15"' do
+      @entry.start  = Time.new(1988, 1, 13, 15, 05, 05, 0)
+      expect(@entry.start_time_formatted).to eq("15:05:05")
+    end
   end
 
   describe '#stop_time_formatted' do
-    it 'returns the stop time formatted like this: "15:10:15"' do
-      expect(@entry.stop_time_formatted).to eq("15:10:15")
+    it 'returns the start time formatted like this: "10:30:15"' do
+      expect(@entry.start_time_formatted).to eq("10:30:15")
+    end
+
+    it 'formats "three o five in the afternoon with five seconds" as "15:05:15"' do
+      @entry.stop  = Time.new(1988, 1, 13, 15, 05, 05, 0)
+      expect(@entry.stop_time_formatted).to eq("15:05:05")
     end
   end
+
 
   # I also need to create a duration and format it
   describe '#duration' do

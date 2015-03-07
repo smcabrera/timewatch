@@ -35,10 +35,7 @@ class Entry < ActiveRecord::Base
   private
 
   def format_time(time)
-    hour = time.hour
-    minute = time.min
-    second = time.sec
-    "#{hour}:#{minute}:#{second}"
+    time.strftime("%H:%M:%S")
   end
 
   def format_date(time)

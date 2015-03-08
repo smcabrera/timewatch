@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Starting Entry</h2>
+
+  <% if @entry.errors.any?  %>
+    <div class="alert alert-danger">
+      <h4>There <%= @entry.errors.count > 1 ? "are " : "is " %><%= pluralize(@entry.errors.count, "error") %></h4>
+      <ul>
+        <% @entry.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for @entry, :url => url_for(:action => 'create_running') do |f| %>
+
+    <div class="form-group">
+      <%= f.label :notes %>
+      <%= f.text_area :notes, class: 'form-control', placeholder: "Description of the activity" %>
+    </div>
+
+    <%= f.submit "Save", class: 'btn btn-success' %>
+
+  <% end %>
+
+</div>
+

@@ -8,7 +8,21 @@ class EntriesController < ApplicationController
   end
 
   def start
-    @entry = Entry.create(:start  => Time.now)
+    @entry = Entry.new
+  end
+
+  def create_running
+    running_entry_params = entry_params
+    running_entry_params["start"] = Time.now
+    running_entry_params["running"] = true
+    @entry = Entry.all.build(running_entry_params)
+
+    if @entry.save
+      redirect_to entries_path
+    else
+      flash[:error] = "There was a problem creating the entry. Please try again."
+      render start_entry_path
+    end
   end
 
   def new

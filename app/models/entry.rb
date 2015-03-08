@@ -4,7 +4,8 @@ class Entry < ActiveRecord::Base
   validates :notes, presence: true
 
   def duration
-    Duration.new(self.stop - self.start)
+    stop = self.stop ? self.stop : Time.now
+    Duration.new(stop - self.start)
   end
 
   def start_time_formatted
@@ -35,7 +36,7 @@ class Entry < ActiveRecord::Base
   private
 
   def format_time(time)
-    time.strftime("%H:%M:%S")
+    time ? time.strftime("%H:%M:%S") : "--"
   end
 
   def format_date(time)

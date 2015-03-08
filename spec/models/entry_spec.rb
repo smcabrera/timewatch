@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Entry do
 
   before do
+    #todo: Get rid of this. It's just confusing because you keep changing it later on and it's hard to remember what it's initial values are in the describe blocks
     start = Time.new(1988, 1, 13, 10, 30, 15, 0)
     stop = Time.new(1988, 1, 13, 15, 10, 15, 0)
     @entry = Entry.new(:start => start, :stop => stop )
@@ -36,15 +37,27 @@ describe Entry do
       @entry.stop  = Time.new(1988, 1, 13, 15, 05, 05, 0)
       expect(@entry.stop_time_formatted).to eq("15:05:05")
     end
+
+    it 'formats the stop time for a running entry (which has no stop time yet) as "--"' do
+      @entry.stop  = nil
+      expect(@entry.stop_time_formatted).to eq("--")
+    end
   end
 
 
   # I also need to create a duration and format it
   describe '#duration' do
-    it "returns the number of seconds between start and stop times" do
+    it 'returns the number of seconds between start and stop times' do
       #seconds = (4 * 60 + 40) * 60 # 4 hours and 40 minutes in seconds
       seconds = 16800
       expect(@entry.duration).to eq(Duration.new(seconds))
+    end
+
+    it 'returns duration from start time to current time when stop time is blank' do
+      start = Time.new(1988, 1, 13, 10, 30, 0, 0 )
+      stop = nil
+      entry = Entry.new(:start => start, :stop => stop)
+      expect(entry.duration).to eq(Duration.new(Time.now - start))
     end
   end
 

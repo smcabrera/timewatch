@@ -27,6 +27,9 @@
         <td>
           <%= entry.notes %>
         </td>
+        <td>
+          <%= link_to "edit", edit_entry_path(entry) %>
+        </td>
       </tr>
     <% end %>
 

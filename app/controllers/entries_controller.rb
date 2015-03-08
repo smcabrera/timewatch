@@ -11,6 +11,22 @@ class EntriesController < ApplicationController
     @entry = Entry.new
   end
 
+  def edit
+    @entry = Entry.find(params[:id])
+  end
+
+  def update
+    @entry = Entry.find(params[:id])
+    @entry.update_attributes(entry_params)
+
+    if @entry.save
+      redirect_to entries_path
+    else
+      flash[:error] = "There was a problem updating the entry. Please try again."
+      render :edit
+    end
+  end
+
   def create_running
     running_entry_params = entry_params
     running_entry_params["start"] = Time.now

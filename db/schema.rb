@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308001111) do
+ActiveRecord::Schema.define(version: 20150308013459) do
 
   create_table "entries", force: true do |t|
     t.datetime "start"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20150308001111) do
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "running"
   end
 
 end

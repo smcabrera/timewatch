@@ -14,6 +14,6 @@ describe 'Starting entries' do
 
     expect(page).to have_content('Time Entries')
     expect(Entry.all.count).to be(1)
-    expect(Entry.first.running).to be(true)
+    expect(Entry.first.stop).to be(nil)
   end
 end

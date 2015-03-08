@@ -30,7 +30,6 @@ class EntriesController < ApplicationController
   def create_running
     running_entry_params = entry_params
     running_entry_params["start"] = Time.now
-    running_entry_params["running"] = true
     @entry = Entry.all.build(running_entry_params)
 
     if @entry.save

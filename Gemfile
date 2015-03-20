@@ -18,10 +18,10 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'capybara', group: :test
+  gem 'capybara'
   gem 'guard-rspec', '~> 4.5.0'
   gem 'jazz_fingers'
-  gem 'rspec-rails', '~> 3.1.0', group: :test
+  gem 'rspec-rails', '~> 3.1.0'
   gem 'spring'
   gem 'spring-commands-rspec', '~> 1.0.4'
 end

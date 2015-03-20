@@ -1,0 +1,6 @@
+app/models/entry.rb 599ac6fbe309102af54e993f11199ce9e3cb5ee8
+app/helpers/entries_helper.rb 528b02f314a9fe8ad8899c48034a6ea6265aeb57
+app/helpers/application_helper.rb eef3d3adce96afe8b14c19b6135323f47543d979
+app/controllers/welcome_controller.rb 7ecae579c0a6625a0d278589885c2b8913ab7f95
+app/controllers/entries_controller.rb 811ac8c975369c4b7c163b3c91ede7ee887a3513
+app/controllers/application_controller.rb 7afa8bd02d2c49fd8df3c6e372b8520c9f916e8e

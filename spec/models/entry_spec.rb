@@ -4,8 +4,8 @@ describe Entry do
 
   before do
     #todo: Get rid of this. It's just confusing because you keep changing it later on and it's hard to remember what it's initial values are in the describe blocks
-    start = Time.new(1988, 1, 13, 10, 30, 15, 0)
-    stop = Time.new(1988, 1, 13, 15, 10, 15, 0)
+    start = Time.new(1988, 1, 13, 10, 30, 15)
+    stop = Time.new(1988, 1, 13, 15, 10, 15)
     @entry = Entry.new(:start => start, :stop => stop )
   end
 
@@ -23,7 +23,7 @@ describe Entry do
     end
 
     it 'formats "three o five in the afternoon with five seconds as "15:05:15"' do
-      @entry.start  = Time.new(1988, 1, 13, 15, 05, 05, 0)
+      @entry.start  = Time.new(1988, 1, 13, 15, 05, 05)
       expect(@entry.start_time_formatted).to eq("15:05:05")
     end
   end
@@ -34,7 +34,7 @@ describe Entry do
     end
 
     it 'formats "three o five in the afternoon with five seconds" as "15:05:15"' do
-      @entry.stop  = Time.new(1988, 1, 13, 15, 05, 05, 0)
+      @entry.stop  = Time.new(1988, 1, 13, 15, 05, 05)
       expect(@entry.stop_time_formatted).to eq("15:05:05")
     end
 
@@ -54,7 +54,7 @@ describe Entry do
     end
 
     it 'returns duration from start time to current time when stop time is blank' do
-      start = Time.new(1988, 1, 13, 10, 30, 0, 0 )
+      start = Time.new(1988, 1, 13, 10, 30, 0)
       stop = nil
       entry = Entry.new(:start => start, :stop => stop)
       expect(entry.duration).to eq(Duration.new(Time.now - start))
@@ -67,21 +67,21 @@ describe Entry do
     end
 
     it 'formats 2 hours, 6 minutes and 30 seconds as "02:06:30"' do
-      start = Time.new(1988, 1, 13, 10, 30, 15, 0)
-      stop  = Time.new(1988, 1, 13, 12, 36, 45, 0)
+      start = Time.new(1988, 1, 13, 10, 30, 15)
+      stop  = Time.new(1988, 1, 13, 12, 36, 45)
       entry = Entry.new(:start => start, :stop => stop )
       expect(entry.duration_formatted).to eq("02:06:30")
     end
 
     it 'formats 10 hours, 10 minutes and 5 seconds as "10:10:05"' do
-      start = Time.new(1988, 1, 13, 10, 30, 15, 0)
-      stop  = Time.new(1988, 1, 13, 20, 40, 20, 0)
+      start = Time.new(1988, 1, 13, 10, 30, 15)
+      stop  = Time.new(1988, 1, 13, 20, 40, 20)
       entry = Entry.new(:start => start, :stop => stop )
       expect(entry.duration_formatted).to eq("10:10:05")
     end
 
     it 'formats 103 hours, 10 minutes and 5 seconds as "103:10:05"' do
-      start = Time.new(1988, 1, 13, 10, 30, 15, 0)
+      start = Time.new(1988, 1, 13, 10, 30, 15)
       stop  = start + Duration.new(
         :hours   => 103,
         :minutes => 10,

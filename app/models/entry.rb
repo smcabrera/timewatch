@@ -41,7 +41,7 @@ class Entry < ActiveRecord::Base
   private
 
   def format_time(time)
-    time ? time.strftime("%H:%M:%S") : "--"
+    time ? time.to_time.strftime("%H:%M:%S") : "--"
   end
 
   def format_date(time)

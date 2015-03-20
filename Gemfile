@@ -24,5 +24,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'spring'
   gem 'spring-commands-rspec', '~> 1.0.4'
+  gem 'database_cleaner', '~> 1.4.1'
 end
 

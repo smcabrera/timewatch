@@ -17,6 +17,8 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'rubocop', require: 'false'
+  gem 'haml-lint', require: 'false'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capybara'

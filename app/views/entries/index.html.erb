@@ -3,28 +3,32 @@
 
   <table class="table table-striped">
     <tr>
-      <th>Day</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Duration</th>
-      <th>Note</th>
+      <th class="text-center">Day</th>
+      <th class="text-center">Start</th>
+      <th class="text-center">End</th>
+      <th class="text-center">Duration</th>
+      <th class="text-center">Note</th>
     </tr>
 
     <% @entries.each do |entry| %>
       <tr>
-        <td>
+        <td class="text-center">
           <%= entry.date_formatted %>
         </td>
-        <td>
+
+        <td class="text-center">
           <%= entry.start_time_formatted %>
         </td>
-        <td>
+
+        <td class="text-center">
           <%= entry.stop_time_formatted %>
         </td>
-        <td>
+
+        <td class="text-center">
           <%= entry.duration_formatted %>
         </td>
-        <td>
+
+        <td class="text-center">
           <%= entry.notes %>
         </td>
         <td>

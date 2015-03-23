@@ -1,21 +1,29 @@
-<%= form_for entry = Entry.new(:start => Time.now) do |f| %>
+<%= bootstrap_form_for entry = Entry.new(:start => Time.now) do |f| %>
   <tr>
-    <td>
-      <%= f.date_select :start, class: 'form-control', placeholder: entry.date_formatted %>
+
+    <td class="text-center">
+      <%= f.date_select :start, class: 'form-control', use_short_month: true, order: [:month, :day, :year], hide_label: true, placeholder: entry.date_formatted %>
     </td>
-    <td>
-      <%= f.time_select :start, ignore_date: true, class: 'form-control', type: 'time', placeholder: "hh:mm" %>
+
+    <td class="text-center">
+      <%= f.time_select :start, ignore_date: true, default: {:hour => 10, :minute => 30}, hide_label: true, class: 'form-control' %>
     </td>
-    <td class="form-group">
-      <%= f.time_field :stop, class: 'form-control', placeholder: "hh:mm" %>
+
+    <td class="text-center">
+      <%= f.time_select :stop, class: 'form-control', hide_label: true, placeholder: "hh:mm" %>
     </td>
+
     <td></td>
-    <td class="form-group">
-      <%= f.text_field :notes, class: 'form-control notes-field', placeholder: "Description of the activity" %>
+
+    <td class="text-center">
+      <%= f.text_field :notes, class: 'form-control notes-field', hide_label: true, placeholder: "Description of the activity" %>
     </td>
-    <td>
-      <%= f.submit "Save", class: 'btn btn-primary' %>
+
+    <td class="text-center">
+      <%= f.submit "begin", name: 'begin', value: 'begin', class: 'btn btn-xs btn-success' %>
+      <%= f.submit "finish", name: 'finish', value: 'finish', class: 'btn btn-xs btn-danger' %>
     </td>
+
   </tr>
 <% end %>
 

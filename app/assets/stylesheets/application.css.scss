@@ -1,10 +1,12 @@
 /*
  *= require_self
  *= require_tree
+ *= require rails_bootstrap_forms
  */
 
 // bootstrap-sprokects needs to be imported before anything else
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "rails_bootstrap_forms";
 

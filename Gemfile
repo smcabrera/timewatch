@@ -5,6 +5,7 @@ gem 'rails', '4.1.7'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'bootstrap_form'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'

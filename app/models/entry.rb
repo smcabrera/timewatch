@@ -16,9 +16,9 @@ class Entry < ActiveRecord::Base
     format_time(self.stop)
   end
 
-    # I don't want to deal with days so I'd rather just handle hours greater than a day with an integer number of hours
-    # As a side note, it's pretty cool how he made this formatting work
-    # See docs here: http://www.rubydoc.info/github/peleteiro/ruby-duration/master/Duration
+  # I don't want to deal with days so I'd rather just handle hours greater than a day with an integer number of hours
+  # As a side note, it's pretty cool how he made this formatting work
+  # See docs here: http://www.rubydoc.info/github/peleteiro/ruby-duration/master/Duration
 
   def duration_formatted
     if self.duration.days > 0
@@ -34,7 +34,7 @@ class Entry < ActiveRecord::Base
   end
 
   def running?
-    # todo: What would be the difference of using "not" here instead of "!"?
+    # TODO: What would be the difference of using "not" here instead of "!"?
     ! self.stop
   end
 

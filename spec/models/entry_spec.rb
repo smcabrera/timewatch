@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Entry do
 
   before do
-    #todo: Get rid of this. It's just confusing because you keep changing it later on and it's hard to remember what it's initial values are in the describe blocks
+    #TODO: Think about getting rid of this. It's just confusing because you keep changing it later on and it's hard to remember what it's initial values are in the describe blocks
     start = Time.new(1988, 1, 13, 10, 30, 15)
     stop = Time.new(1988, 1, 13, 15, 10, 15)
     @entry = Entry.new(:start => start, :stop => stop )

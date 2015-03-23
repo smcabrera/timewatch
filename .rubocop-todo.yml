@@ -22,7 +22,6 @@ Lint/UselessAssignment:
 # Configuration parameters: AllowURI, URISchemes.
 Metrics/LineLength:
   Max: 166
-  Enabled: true
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -42,7 +41,7 @@ Style/ClassAndModuleChildren:
 # Offense count: 2
 # Configuration parameters: Keywords.
 Style/CommentAnnotation:
-  Enabled: false
+  Enabled: true
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -51,7 +50,7 @@ Style/CommentIndentation:
 
 # Offense count: 12
 Style/Documentation:
-  Enabled: false
+  Enabled: true
 
 # Offense count: 2
 # Cop supports --auto-correct.

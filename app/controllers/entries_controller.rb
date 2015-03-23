@@ -1,30 +1,19 @@
 class EntriesController < ApplicationController
+  before_action :set_entry, only: [:show, :edit, :update, :destroy]
+
   def index
     @entries = Entry.all
   end
 
   def show
-    @entry = Entry.find(params[:id])
   end
 
   def start
     @entry = Entry.new
   end
 
-  def edit
-    @entry = Entry.find(params[:id])
-  end
-
-  def update
-    @entry = Entry.find(params[:id])
-    @entry.update_attributes(entry_params)
-
-    if @entry.save
-      redirect_to entries_path
-    else
-      flash[:error] = "There was a problem updating the entry. Please try again."
-      render :edit
-    end
+  def new
+    @entry = Entry.new
   end
 
   def create_running
@@ -40,22 +29,43 @@ class EntriesController < ApplicationController
     end
   end
 
-  def new
-    @entry = Entry.new
-  end
-
   def create
     @entry = Entry.all.build(entry_params)
-
     if @entry.save
       redirect_to entries_path
     else
       flash[:error] = "There was a problem creating the entry. Please try again."
-      render :new
+      render :index
     end
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  def edit
+  end
+
+  def update
+    @entry.update_attributes(entry_params)
+
+    if @entry.save
+      redirect_to entries_path
+    else
+      flash[:error] = "There was a problem updating the entry. Please try again."
+      render :edit
+    end
+  end
+
+  def destroy
+    @entry.destroy
+    respond_to do |format|
+      format.html { redirect_to entries_path, notice: 'Post was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def set_entry
+    @entry = Entry.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
   def entry_params
     params.require(:entry).permit(:start, :stop, :notes)
   end

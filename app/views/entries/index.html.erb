@@ -29,10 +29,14 @@
         </td>
         <td>
           <%= link_to "edit", edit_entry_path(entry) %>
+          <%= link_to "delete", entry_path(entry), method: :delete %>
+
         </td>
       </tr>
     <% end %>
-
+    <tr>
+      <%= render partial: 'entries/form' %>
+    </tr>
   </table>
 
   <%= link_to "New Entry", new_entry_path, class: "btn btn-success" %>

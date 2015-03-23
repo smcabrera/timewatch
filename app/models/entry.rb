@@ -41,7 +41,7 @@ class Entry < ActiveRecord::Base
   private
 
   def format_time(time)
-    # This line is a little strange--ActiveRecord saves times in a format that defaults to Greenwich Mean Time. to_time fixes this
+    # This line is a little strange--ActiveRecord saves times in a format that defaults to Greenwich Mean Time. to_time fixes this problem
     time ? time.to_time.strftime("%H:%M:%S") : "--"
   end
 

@@ -46,7 +46,7 @@ describe EntriesController do
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'saves the new time entry in the database' do
-        expect{
+        expect {
           post :create, entry: @entry.attributes
         }.to change(Entry, :count).by(1)
       end
